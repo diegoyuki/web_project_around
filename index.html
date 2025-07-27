@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Around the US</title>
+    <link rel="stylesheet" href="pages/index.css">
+</head>
+<body>
+    <div class="page">
+    <header class="header">
+        <h1>
+            <span class="big">Around</span>
+            <span class="small">the U.S.</span>
+        </h1>
+    </header>
+        <hr class="divider">
+    <section class="user">
+  <img 
+    class="user__image"
+    src="/images/userimage.jpg" 
+    alt="Profile Picture"
+  />
+  <div class="user__info">
+    <h2 class="user__name">
+      Jacques Cousteau
+      <button class="user__edit_button">
+        <img 
+          class="user__edit_image"
+          src="images/Edit Button.png"
+          alt="boton de edicion"
+        />
+      </button>
+    </h2>
+    <p class="user__bio">Explorador</p>
+  </div>
+  <button class="user__add_button">
+    <img 
+      class="user__add_image"
+      src="images/Add Button.png"
+      alt="Agregar"
+    />
+  </button>
+</section>
+<section class="gallery">
+  <div class="gallery__item">
+    <img class="gallery__image" src="images/galleryone.jpg" alt="Valle de Yosemite, se encuentra en california" />
+    <div class="gallery__info">
+      <p class="gallery__title">Valle de Yosemite</p>
+      <button class="gallery__like_button"></button>
+    </div>
+  </div>
+  <div class="gallery__item">
+    <img class="gallery__image" src="images/gallerytwo.png" alt="Lago Louise, ubicado en canada dentro del Parque Nacional Banff," />
+    <div class="gallery__info">
+      <p class="gallery__title">Lago Louise</p>
+      <button class="gallery__like_button"></button>
+    </div>
+  </div>
+  <div class="gallery__item">
+    <img class="gallery__image" src="images/gallerythree.png" alt="Montañas Calvas, montanas sin arboles en su cima, se encuentran en carolina del norte y tenessee" />
+    <div class="gallery__info">
+      <p class="gallery__title">Montañas Calvas</p>
+      <button class="gallery__like_button"></button>
+    </div>
+  </div>
+  <div class="gallery__item">
+    <img class="gallery__image" src="images/galleryfour.png" alt="imagen Latemar, gran montanoso en los alpes orientales" />
+    <div class="gallery__info">
+      <p class="gallery__title">Latemar</p>
+      <button class="gallery__like_button"></button>
+    </div>
+  </div>
+  <div class="gallery__item">
+    <img class="gallery__image" src="images/galleryfive.png" alt="imagen de Vanois National, lago el cual se encuentra en francia" />
+    <div class="gallery__info">
+      <p class="gallery__title">Vanois National...</p>
+      <button class="gallery__like_button"></button>
+    </div>
+  </div>
+  <div class="gallery__item">
+    <img class="gallery__image" src="images/gallerysix.png" alt="imagen de Lago di Braies, lago ubicado en italia" />
+    <div class="gallery__info">
+      <p class="gallery__title">Lago di Braies</p>
+      <button class="gallery__like_button"></button>
+    </div>
+  </div>
+   <footer>
+        <p class="footer__text">
+        © 2025 Around the U.S.
+        </p>
+    </footer>
+</section>
+    <script src="pages/script.js"></script>
+    <div class="modal hidden">
+  <div class="modal__container">
+    <button type="button" class="modal__close">×</button>
+    <form class="edit-form">
+      <h3 class="edit-form__title">Editar perfil</h3>
+      <input type="text" class="edit-form__input" placeholder="Nombre" required />
+      <input type="text" class="edit-form__input" placeholder="Biografía" required />
+      <button type="submit" class="edit-form__submit">Guardar</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
