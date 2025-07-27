@@ -51,7 +51,7 @@
   height: 24px;
   margin-left: 10px;
 }
-.user__add_button {
+.user__bio_button {
   background: none;
   border: none;
   padding: 0;
@@ -61,7 +61,7 @@
   align-items: center;
 }
 
-.user__add_image {
+.user__bio_image {
   width: 150px;
   height: 50px;
   object-fit: contain;
