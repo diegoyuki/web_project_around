@@ -1,0 +1,125 @@
+.user {
+  display: flex;
+  align-items: center;
+  max-width: 873px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1rem 0;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.user__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.user__name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.user__bio {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #666;
+}
+
+.user__edit_button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.user__edit_image {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+}
+.user__add_button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.user__add_image {
+  width: 150px;
+  height: 50px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 767px) {
+  .user {
+    flex-direction: column;
+    width: 100%;
+    padding: 1.5rem;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .user__name {
+    font-size: 32px;
+  }
+
+  .user__bio {
+    font-size: 16px;
+  }
+
+  .user__add_button {
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+
+  .user__add_image {
+    width: 120px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .user {
+    padding: 1rem;
+  }
+
+  .user__image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .user__name {
+    font-size: 24px;
+  }
+
+  .user__bio {
+    font-size: 14px;
+  }
+
+  .user__edit_image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .user__add_image {
+    width: 100px;
+    height: 35px;
+  }
+}

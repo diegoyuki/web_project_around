@@ -1,0 +1,172 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal__container {
+  position: relative;
+  background-color: white;
+  color: black;
+  padding: 40px 36px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 430px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal__close {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 32px;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal__close:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edit-form__title {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.edit-form__input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  font-size: 16px;
+  background: transparent;
+  outline: none;
+}
+
+.edit-form__input:focus {
+  border-bottom: 1px solid black;
+}
+
+.edit-form__submit {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-form__submit:hover {
+  background-color: #333;
+}
+
+/* Base (desktop) ya tienes */
+
+/* Hasta 875px: tamaño más pequeño, igual centrado */
+@media screen and (max-width: 875px) {
+  .modal__container {
+    max-width: 400px;      /* un poco más pequeño */
+    padding: 36px 32px;    /* reduce padding */
+  }
+
+  .modal__close {
+    top: -30px;
+    right: -30px;
+    width: 36px;
+    height: 36px;
+    font-size: 28px;
+  }
+}
+
+/* Hasta 767px: igual que arriba, algo más compacto */
+@media screen and (max-width: 767px) {
+  .modal__container {
+    max-width: 360px;
+    padding: 30px 28px;
+  }
+
+  .modal__close {
+    top: -25px;
+    right: -25px;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+  }
+
+  .edit-form__title {
+    font-size: 20px;
+  }
+
+  .edit-form__input {
+    font-size: 14px;
+  }
+
+  .edit-form__submit {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Hasta 480px: móvil, estilo Figma exacto */
+@media screen and (max-width: 480px) {
+  .modal__container {
+    max-width: 320px;           /* ancho fijo similar al diseño */
+    padding: 24px 24px;
+    border-radius: 16px;        /* bordes más redondeados */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+
+  .modal__close {
+    top: -25px;
+    right: -25px;
+    background-color: rgba(0,0,0,0.7);
+    width: 34px;
+    height: 34px;
+    font-size: 26px;
+    color: white;
+  }
+
+  .edit-form__title {
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .edit-form__input {
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+
+  .edit-form__submit {
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+}

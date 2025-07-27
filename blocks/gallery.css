@@ -1,0 +1,114 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 282px); 
+  gap: 15px; 
+  justify-content: center; 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.gallery__item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 282px; 
+}
+
+.gallery__image {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+}
+
+.gallery__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.gallery__like_button {
+  width: 24px;
+  height: 24px;
+  background: url('/images/heartbutton.svg') no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  transition: background-image 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover: cambia el ícono */
+.gallery__like_button:hover {
+  background-image: url('/images/hearthover.svg');
+}
+
+/* Estado activo (cuando el usuario hace clic) */
+.gallery__like_button.active {
+  background-image: url('/images/heartactive.png');
+  transform: scale(1.1); /* animación de “pop” suave */
+}
+
+
+@media screen and (max-width: 875px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem;
+    gap: 12px;
+  }
+
+  .gallery__item {
+    width: 100%;
+  }
+
+  .gallery__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+    padding: 1.5rem;
+  }
+
+  .gallery__item {
+    width: 100%; 
+  }
+
+  .gallery__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery__title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr; 
+    gap: 10px;
+    padding: 1rem;
+  }
+
+  .gallery__title {
+    font-size: 18px;
+  }
+}

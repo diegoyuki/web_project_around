@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  max-width: 873px;
+  width: 100%;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.header h1 {
+  display: flex;
+  align-items: flex-start; 
+  gap: 0.5rem; 
+  margin: 0;
+  font-weight: 400; 
+}
+
+.header h1 .big {
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 400; 
+}
+
+.header h1 .small {
+  font-size: 15px;
+  align-self: flex-start;
+  color: #ccc;
+  line-height: 1;
+  margin-top: 0.2rem; 
+  font-weight: 300; 
+}
