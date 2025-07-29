@@ -132,19 +132,19 @@
 
 @media screen and (max-width: 480px) {
   .modal__container {
-    width: 90vw;            /* ancho proporcional sin tocar bordes */
+    width: 90vw;           
     max-width: none;
     padding: 20px;
     border-radius: 14px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    margin: 0;          /* centrado por el flex del overlay */
+    margin: 0;          
   }
 
   .modal__close {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%, -50%); /* botón centrado encima */
+    transform: translate(-50%, -50%); 
     background-color: rgba(0, 0, 0, 0.7);
     width: 36px;
     height: 36px;
