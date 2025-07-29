@@ -131,14 +131,13 @@
 }
 
 @media screen and (max-width: 480px) {
-@media screen and (max-width: 480px) {
   .modal__container {
     width: 90vw;            /* ancho proporcional sin tocar bordes */
     max-width: none;
     padding: 20px;
     border-radius: 14px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    margin-top: 600px;           /* centrado por el flex del overlay */
+    margin: 0;          /* centrado por el flex del overlay */
   }
 
   .modal__close {
@@ -177,4 +176,3 @@
     padding: 12px;
     border-radius: 8px;
   }
-}
