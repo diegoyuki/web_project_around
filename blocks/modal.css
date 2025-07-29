@@ -131,22 +131,35 @@
 }
 
 @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .modal__container {
-    max-width: 320px;           
-    padding: 24px 24px;
-    border-radius: 16px;        
+    width: 90vw;            /* ancho proporcional sin tocar bordes */
+    max-width: none;
+    padding: 20px;
+    border-radius: 14px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    margin-top: 600px;           /* centrado por el flex del overlay */
   }
 
   .modal__close {
-    top: -25px;
-    right: -25px;
-    background-color: rgba(0,0,0,0.7);
-    width: 34px;
-    height: 34px;
-    font-size: 26px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%); /* botón centrado encima */
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
     color: white;
+    border-radius: 50%;
+    z-index: 1001;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
   }
+}
 
   .edit-form__title {
     font-size: 18px;
