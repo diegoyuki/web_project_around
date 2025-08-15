@@ -44,46 +44,75 @@
 </section>
 <section class="gallery">
   <div class="gallery__item">
-    <img class="gallery__image" src="images/galleryone.jpg" alt="Valle de Yosemite, se encuentra en california" />
+    <button class="card__delete-button">
+    <img src="images/delete.svg" alt="Eliminar tarjeta">
+    </button>
+    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" alt="Valle de Yosemite, se encuentra en california" />
     <div class="gallery__info">
       <p class="gallery__title">Valle de Yosemite</p>
-      <button class="gallery__button gallery__button_like"></button>
-
+      <button class="gallery__button gallery__button_like">
+      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
+      </button>
     </div>
   </div>
   <div class="gallery__item">
-    <img class="gallery__image" src="images/gallerytwo.png" alt="Lago Louise, ubicado en canada dentro del Parque Nacional Banff," />
+    <button class="card__delete-button">
+    <img src="images/delete.svg" alt="Eliminar tarjeta">
+    </button>
+    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg" alt="Lago Louise, ubicado en canada dentro del Parque Nacional Banff," />
     <div class="gallery__info">
       <p class="gallery__title">Lago Louise</p>
-      <button class="gallery__button gallery__button_like"></button>
+      <button class="gallery__button gallery__button_like">
+      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
+      </button>
     </div>
   </div>
   <div class="gallery__item">
-    <img class="gallery__image" src="images/gallerythree.png" alt="Montañas Calvas, montanas sin arboles en su cima, se encuentran en carolina del norte y tenessee" />
+    <button class="card__delete-button">
+    <img src="images/delete.svg" alt="Eliminar tarjeta">
+    </button>
+    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg" alt="Montañas Calvas, montanas sin arboles en su cima, se encuentran en carolina del norte y tenessee" />
     <div class="gallery__info">
       <p class="gallery__title">Montañas Calvas</p>
-      <<button class="gallery__button gallery__button_like"></button>
+      <button class="gallery__button gallery__button_like">
+      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
+      </button>
     </div>
   </div>
   <div class="gallery__item">
-    <img class="gallery__image" src="images/galleryfour.png" alt="imagen Latemar, gran montanoso en los alpes orientales" />
+    <button class="card__delete-button">
+    <img src="images/delete.svg" alt="Eliminar tarjeta">
+    </button>
+    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg" alt="imagen Latemar, gran montanoso en los alpes orientales" />
     <div class="gallery__info">
       <p class="gallery__title">Latemar</p>
-      <button class="gallery__button gallery__button_like"></button>
+      <button class="gallery__button gallery__button_like">
+      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
+      </button>
     </div>
   </div>
   <div class="gallery__item">
-    <img class="gallery__image" src="images/galleryfive.png" alt="imagen de Vanois National, lago el cual se encuentra en francia" />
+    <button class="card__delete-button">
+    <img src="images/delete.svg" alt="Eliminar tarjeta">
+    </button>
+    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg" alt="imagen de Vanois National, lago el cual se encuentra en francia" />
     <div class="gallery__info">
       <p class="gallery__title">Vanois National...</p>
-      <button class="gallery__button gallery__button_like"></button>
+      <button class="gallery__button gallery__button_like">
+      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
+      </button>
     </div>
   </div>
   <div class="gallery__item">
-    <img class="gallery__image" src="images/gallerysix.png" alt="imagen de Lago di Braies, lago ubicado en italia" />
+    <button class="card__delete-button">
+    <img src="images/delete.svg" alt="Eliminar tarjeta">
+    </button>
+    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg" alt="imagen de Lago di Braies, lago ubicado en italia" />
     <div class="gallery__info">
       <p class="gallery__title">Lago di Braies</p>
-      <button class="gallery__button gallery__button_like"></button>
+      <button class="gallery__button gallery__button_like">
+      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
+      </button>
     </div>
   </div>
    <footer class="footer">
@@ -101,6 +130,25 @@
       <button type="submit" class="edit-form__submit">Guardar</button>
     </form>
   </div>
+  </div>
+  <div class="modal modal-add-place hidden">
+  <div class="modal__content">
+    <button class="modal__close modal-add-place__close">&times;</button>
+    <form class="add-form">
+      <h2 class="modal__title">Nuevo lugar</h2>
+      <input type="text" class="add-form__input" placeholder="Nombre" required>
+      <input type="url" class="add-form__input" placeholder="Enlace de la imagen" required>
+      <button type="submit" class="modal__save">Crear</button>
+    </form>
+  </div>
+</div>
+<div class="modal modal-image-preview hidden">
+  <div class="modal-image-preview__content">
+    <img src="" alt="" class="modal-image-preview__img">
+    <p class="modal-image-preview__caption"></p>
+  </div>
+  <button class="modal__close modal-image-preview__close"></button>
+</div>
 </div>
 </body>
 </html>

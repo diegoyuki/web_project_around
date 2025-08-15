@@ -87,6 +87,105 @@
   background-color: #333;
 }
 
+/* Contenedor interno del modal */
+.modal-add-place .modal__content {
+  position: relative;
+  background-color: white;
+  color: black;
+  padding: 40px 36px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 430px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Título */
+.modal-add-place .modal__title {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+  color: black;
+}
+
+/* Inputs */
+.add-form__input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  font-size: 16px;
+  background: transparent;
+  outline: none;
+}
+
+/* Botón Guardar (Crear) */
+.modal__save {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 14px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 90%; /* más ancho */
+  align-self: center;
+}
+
+.modal__save:hover {
+  background-color: #333;
+}
+
+
+.modal-image-preview {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 0;
+  flex-direction: column; /* para apilar imagen y caption */
+}
+
+.modal-image-preview__img {
+  max-width: 816px;
+  max-height: 540px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  position: relative;
+}
+
+.modal-image-preview__caption {
+  margin-top: 8px; /* separación pequeña con la imagen */
+  color: white;
+  font-size: 18px;
+  align-self: flex-start; /* Alinea el texto a la izquierda respecto al contenedor flex */
+  max-width: 816px; /* para que no se extienda más allá de la imagen */
+}
+
+.modal-image-preview__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: url("images/close-icon.svg") no-repeat center/contain;
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ======== MEDIA QUERIES INTEGRADOS CON MODAL IMAGE PREVIEW ======== */
+
 @media screen and (max-width: 875px) {
   .modal__container {
     max-width: 400px;      
@@ -99,6 +198,24 @@
     width: 36px;
     height: 36px;
     font-size: 28px;
+  }
+
+  /* Ajustes para modal-image-preview en esta resolución */
+  .modal-image-preview__img {
+    max-width: 90vw;
+    max-height: 60vh;
+  }
+
+  .modal-image-preview__caption {
+    font-size: 16px;
+    max-width: 90vw;
+  }
+
+  .modal-image-preview__close {
+    width: 36px;
+    height: 36px;
+    top: 16px;
+    right: 16px;
   }
 }
 
@@ -127,6 +244,24 @@
   .edit-form__submit {
     font-size: 14px;
     padding: 10px;
+  }
+
+  /* Ajustes modal-image-preview */
+  .modal-image-preview__img {
+    max-width: 85vw;
+    max-height: 55vh;
+  }
+
+  .modal-image-preview__caption {
+    font-size: 15px;
+    max-width: 85vw;
+  }
+
+  .modal-image-preview__close {
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    right: 12px;
   }
 }
 
@@ -158,21 +293,52 @@
     justify-content: center;
     display: none;
   }
+
+  .modal-add-place .modal__content {
+    width: 85vw;         /* un poco más pequeño */
+    max-width: none;
+    margin: 0 auto;      /* centra el modal */
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  /* Ajustes modal-image-preview */
+  .modal-image-preview__img {
+    max-width: 95vw;
+    max-height: 50vh;
+  }
+
+  .modal-image-preview__caption {
+    font-size: 14px;
+    max-width: 95vw;
+  }
+
+  .modal-image-preview__close {
+    width: 28px;
+    height: 28px;
+    top: 8px;
+    right: 8px;
+  }
 }
 
-  .edit-form__title {
-    font-size: 18px;
-    font-weight: 900;
-  }
+/* Reitero estilos generales para ediciones */
+.edit-form__title {
+  font-size: 18px;
+  font-weight: 900;
+}
 
-  .edit-form__input {
-    font-size: 14px;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-  }
+.edit-form__input {
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
 
-  .edit-form__submit {
-    font-size: 15px;
-    padding: 12px;
-    border-radius: 8px;
-  }
+.edit-form__submit {
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+
+
+
