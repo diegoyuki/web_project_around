@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // =========================
-  // EDITAR PERFIL (modal #1)
-  // =========================
+
   const editButton = document.querySelector('.user__edit_button');
   const modalEdit = document.querySelector('.modal:not(.modal-add-place):not(.modal-image-preview)');
   const formEdit = document.querySelector('.edit-form');
@@ -36,9 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === modalEdit) modalEdit.classList.add('hidden');
   });
 
-  // =========================
-  // AGREGAR LUGAR (modal #2)
-  // =========================
   const addButton          = document.querySelector('.user__bio_button');
   const modalAddPlace      = document.querySelector('.modal-add-place');
   const closeButtonAdd     = document.querySelector('.modal-add-place__close');
@@ -83,12 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
     modalAddPlace.classList.add('hidden');
   });
 
-  // ================================
-  // GALERÍA: eliminar / like / preview
-  // ================================
-
   galleryContainer.addEventListener('click', (e) => {
-    // Eliminar
+   
     const delBtn = e.target.closest('.card__delete-button');
     if (delBtn) {
       e.stopPropagation();
@@ -97,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Like (ambas clases)
     const likeBtn =
       e.target.closest('.gallery__button_like') ||
       e.target.closest('.gallery__like_button');
@@ -106,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Vista previa de imagen
     const img = e.target.closest('.gallery__image');
     if (img) {
       const card  = img.closest('.gallery__item');
@@ -123,9 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // =========================
-  // Cierre del modal de imagen
-  // =========================
   const imageModal = document.querySelector('.modal-image-preview');
   const imageModalCloseBtn = imageModal.querySelector('.modal-image-preview__close');
 
@@ -137,9 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
     imageModal.classList.add('hidden');
   });
 
-  // =========================
-  // Cerrar cualquier modal con ESC
-  // =========================
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     if (!modalEdit.classList.contains('hidden')) modalEdit.classList.add('hidden');
@@ -148,9 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// =========================
-// LIKE usando iconos <img>
-// =========================
 document.querySelectorAll('.gallery__button_like').forEach(button => {
   button.addEventListener('click', () => {
     const icon = button.querySelector('.gallery__like-icon');

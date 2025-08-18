@@ -87,7 +87,6 @@
   background-color: #333;
 }
 
-/* Contenedor interno del modal */
 .modal-add-place .modal__content {
   position: relative;
   background-color: white;
@@ -105,7 +104,6 @@
   gap: 20px;
 }
 
-/* Título */
 .modal-add-place .modal__title {
   font-size: 24px;
   font-weight: 900;
@@ -113,7 +111,6 @@
   color: black;
 }
 
-/* Inputs */
 .add-form__input {
   border: none;
   border-bottom: 1px solid #ccc;
@@ -123,7 +120,6 @@
   outline: none;
 }
 
-/* Botón Guardar (Crear) */
 .modal__save {
   background-color: black;
   color: white;
@@ -133,14 +129,13 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  width: 90%; /* más ancho */
+  width: 90%; 
   align-self: center;
 }
 
 .modal__save:hover {
   background-color: #333;
 }
-
 
 .modal-image-preview {
   position: fixed;
@@ -151,7 +146,34 @@
   align-items: center;
   z-index: 2000;
   padding: 0;
-  flex-direction: column; /* para apilar imagen y caption */
+  flex-direction: column; 
+}
+
+.modal-image-preview__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+}
+
+.modal-image-preview__close {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  background: none;
+  border: none;
+  font-size: 50px;
+  font-weight: normal;
+  cursor: pointer;
+  color: white;
+  z-index: 2001;
+  padding: 0;
+  line-height: 1;
+}
+
+.modal-image-preview__close:hover {
+  color: #aaa;
 }
 
 .modal-image-preview__img {
@@ -166,30 +188,18 @@
 }
 
 .modal-image-preview__caption {
-  margin-top: 8px; /* separación pequeña con la imagen */
+  margin-top: 8px; 
   color: white;
   font-size: 18px;
-  align-self: flex-start; /* Alinea el texto a la izquierda respecto al contenedor flex */
-  max-width: 816px; /* para que no se extienda más allá de la imagen */
+  align-self: flex-start; 
+  max-width: 816px; 
 }
 
-.modal-image-preview__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: url("images/close-icon.svg") no-repeat center/contain;
-  width: 32px;
-  height: 32px;
-  border: none;
-  cursor: pointer;
-}
-
-/* ======== MEDIA QUERIES INTEGRADOS CON MODAL IMAGE PREVIEW ======== */
 
 @media screen and (max-width: 875px) {
   .modal__container {
-    max-width: 400px;      
-    padding: 36px 32px;   
+    max-width: 400px;
+    padding: 36px 32px;
   }
 
   .modal__close {
@@ -200,7 +210,6 @@
     font-size: 28px;
   }
 
-  /* Ajustes para modal-image-preview en esta resolución */
   .modal-image-preview__img {
     max-width: 90vw;
     max-height: 60vh;
@@ -212,10 +221,9 @@
   }
 
   .modal-image-preview__close {
-    width: 36px;
-    height: 36px;
-    top: 16px;
-    right: 16px;
+    top: -30px;
+    right: -30px;
+    font-size: 26px;
   }
 }
 
@@ -246,7 +254,6 @@
     padding: 10px;
   }
 
-  /* Ajustes modal-image-preview */
   .modal-image-preview__img {
     max-width: 85vw;
     max-height: 55vh;
@@ -258,85 +265,69 @@
   }
 
   .modal-image-preview__close {
-    width: 32px;
-    height: 32px;
-    top: 12px;
-    right: 12px;
+    top: -30px;
+    right: -30px;
+    font-size: 24px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .modal__container {
-    width: 90vw;           
+    width: 90vw;
     max-width: none;
     padding: 20px;
     border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    margin: 0;          
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    margin: 0;
   }
 
   .modal__close {
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    background-color: rgba(0, 0, 0, 0.7);
-    width: 36px;
-    height: 36px;
+    top: -25px;  
+    right: -25px;
     font-size: 24px;
     color: white;
     border-radius: 50%;
     z-index: 1001;
     cursor: pointer;
-    display: flex;
+    display: flex;  
     align-items: center;
     justify-content: center;
-    display: none;
+    transform: none; 
   }
 
   .modal-add-place .modal__content {
-    width: 85vw;         /* un poco más pequeño */
+    width: 85vw;
     max-width: none;
-    margin: 0 auto;      /* centra el modal */
+    margin: 0 auto;
     padding: 20px;
     border-radius: 12px;
   }
 
-  /* Ajustes modal-image-preview */
-  .modal-image-preview__img {
-    max-width: 95vw;
-    max-height: 50vh;
-  }
+ .modal-image-preview__img {
+  max-width: 90vw;
+  max-height: 60vh;
+}
 
   .modal-image-preview__caption {
     font-size: 14px;
-    max-width: 95vw;
+    max-width: 85vw;
   }
 
   .modal-image-preview__close {
-    width: 28px;
-    height: 28px;
-    top: 8px;
-    right: 8px;
+    position: absolute;
+    top: -28px;
+    right: -25px;
+    font-size: 22px;
+    background: none;
+    border: none;
+    color: white;
+    font-weight: normal;
+    padding: 0;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3000;
   }
-}
-
-/* Reitero estilos generales para ediciones */
-.edit-form__title {
-  font-size: 18px;
-  font-weight: 900;
-}
-
-.edit-form__input {
-  font-size: 14px;
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
-}
-
-.edit-form__submit {
-  font-size: 15px;
-  padding: 12px;
-  border-radius: 8px;
 }
 
 
