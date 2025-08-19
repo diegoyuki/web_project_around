@@ -120,25 +120,63 @@
 </footer>
 </section>
     <script src="scripts/index.js"></script>
-    <div class="modal hidden">
+    <div class="modal modal-edit hidden">
   <div class="modal__container">
     <button type="button" class="modal__close">×</button>
-    <form class="edit-form">
+    <form class="edit-form form-validator">
       <h3 class="edit-form__title">Editar perfil</h3>
-      <input type="text" class="edit-form__input" placeholder="Nombre" required />
-      <input type="text" class="edit-form__input" placeholder="Biografía" required />
-      <button type="submit" class="edit-form__submit">Guardar</button>
+      <input
+        type="text"
+        class="edit-form__input form-validator__input"
+        name="user-name"
+        placeholder="Nombre"
+        required
+        minlength="2"
+      />
+      <span class="form-validator__error user-name-error"></span>
+      <input
+        type="text"
+        class="edit-form__input form-validator__input"
+        name="user-bio"
+        placeholder="Biografía"
+        required
+        minlength="2"
+      />
+      <span class="form-validator__error user-bio-error"></span>
+      <button
+        type="submit"
+        class="edit-form__submit form-validator__submit"
+        disabled
+      >Guardar</button>
     </form>
   </div>
-  </div>
-  <div class="modal modal-add-place hidden">
+</div>
+<div class="modal modal-add-place hidden">
   <div class="modal__content">
     <button class="modal__close modal-add-place__close">&times;</button>
-    <form class="add-form">
+    <form class="add-form" novalidate>
       <h2 class="modal__title">Nuevo lugar</h2>
-      <input type="text" class="add-form__input" placeholder="Nombre" required>
-      <input type="url" class="add-form__input" placeholder="Enlace de la imagen" required>
-      <button type="submit" class="modal__save">Crear</button>
+      <input
+        type="text"
+        class="add-form__input"
+        name="place-name"
+        placeholder="Nombre"
+        required
+        minlength="2"
+        maxlength="30"
+        data-validate="true"
+      />
+      <span class="add-form__input-error place-name-error"></span>
+      <input
+        type="url"
+        class="add-form__input"
+        name="place-url"
+        placeholder="Enlace de la imagen"
+        required
+        data-validate="true"
+      />
+      <span class="add-form__input-error place-url-error"></span>
+      <button type="submit" class="edit-form__submit form-validator__submit" disabled>Guardar</button>
     </form>
   </div>
 </div>

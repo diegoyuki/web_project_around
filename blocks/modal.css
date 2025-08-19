@@ -47,6 +47,62 @@
   color: #fff;
 }
 
+
+.form-validator__input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  font-size: 16px;
+  background: transparent;
+  outline: none;
+}
+
+.form-validator__input:focus {
+  border-bottom: 1px solid black;
+}
+
+.form-validator__submit {
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: 1px solid black;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: not-allowed;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+.form-validator__submit_enabled {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.form-validator__error {
+  color: red;
+  font-size: 12px;
+  height: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.add-form__input-error {
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+  height: 14px;
+  visibility: hidden;
+}
+
+.add-form__input-invalid + .add-form__input-error {
+  visibility: visible;
+}
+
+
 .edit-form {
   display: flex;
   flex-direction: column;
@@ -272,10 +328,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .modal {
-    align-items: flex-start;
-    padding-top: 350px; 
-  }
 
   .modal__container {
     position: relative; 
