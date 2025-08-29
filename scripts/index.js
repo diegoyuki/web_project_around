@@ -2,7 +2,6 @@ import Card from './card.js';
 import FormValidator from './FormValidator.js';
 import { openModal, setModalListeners } from './utils.js';
 
-// Configuración de tarjetas iniciales
 const initialCards = [
   {
     title: 'Valle de Yosemite',
@@ -31,7 +30,6 @@ const initialCards = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Configuración de validación
   const config = {
     inputSelector: '.form-validator__input',
     submitButtonSelector: '.form-validator__submit',
@@ -39,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     inputErrorClass: 'add-form__input-invalid'
   };
 
-  // Activar validación en todos los formularios
   document.querySelectorAll('.form-validator').forEach(form => {
     const validator = new FormValidator(config, form);
     validator.enableValidation();
@@ -47,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setModalListeners();
 
-  // Cargar las tarjetas iniciales dinámicamente
   const gallery = document.querySelector('.gallery');
   initialCards.forEach(cardData => {
     const card = new Card(cardData, '#card-template');
@@ -60,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalAdd = document.querySelector('.modal-add-place');
   const addBtn = document.querySelector('.user__bio_button');
 
-  // Agregar nueva tarjeta
   addForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = inputPlaceName.value.trim();
@@ -80,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     openModal(modalAdd);
   });
 
-  // Editar perfil
   const editBtn = document.querySelector('.user__edit_button');
   const modalEdit = document.querySelector('.modal-edit');
   const formEdit = document.querySelector('.edit-form');
