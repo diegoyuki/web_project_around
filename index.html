@@ -43,84 +43,11 @@
 </button>
 </section>
 <section class="gallery">
-  <div class="gallery__item">
-    <button class="card__delete-button">
-    <img src="images/delete.svg" alt="Eliminar tarjeta">
-    </button>
-    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" alt="Valle de Yosemite, se encuentra en california" />
-    <div class="gallery__info">
-      <p class="gallery__title">Valle de Yosemite</p>
-      <button class="gallery__button gallery__button_like">
-      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
-      </button>
-    </div>
-  </div>
-  <div class="gallery__item">
-    <button class="card__delete-button">
-    <img src="images/delete.svg" alt="Eliminar tarjeta">
-    </button>
-    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg" alt="Lago Louise, ubicado en canada dentro del Parque Nacional Banff," />
-    <div class="gallery__info">
-      <p class="gallery__title">Lago Louise</p>
-      <button class="gallery__button gallery__button_like">
-      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
-      </button>
-    </div>
-  </div>
-  <div class="gallery__item">
-    <button class="card__delete-button">
-    <img src="images/delete.svg" alt="Eliminar tarjeta">
-    </button>
-    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg" alt="Montañas Calvas, montanas sin arboles en su cima, se encuentran en carolina del norte y tenessee" />
-    <div class="gallery__info">
-      <p class="gallery__title">Montañas Calvas</p>
-      <button class="gallery__button gallery__button_like">
-      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
-      </button>
-    </div>
-  </div>
-  <div class="gallery__item">
-    <button class="card__delete-button">
-    <img src="images/delete.svg" alt="Eliminar tarjeta">
-    </button>
-    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg" alt="imagen Latemar, gran montanoso en los alpes orientales" />
-    <div class="gallery__info">
-      <p class="gallery__title">Latemar</p>
-      <button class="gallery__button gallery__button_like">
-      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
-      </button>
-    </div>
-  </div>
-  <div class="gallery__item">
-    <button class="card__delete-button">
-    <img src="images/delete.svg" alt="Eliminar tarjeta">
-    </button>
-    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg" alt="imagen de Vanois National, lago el cual se encuentra en francia" />
-    <div class="gallery__info">
-      <p class="gallery__title">Vanois National...</p>
-      <button class="gallery__button gallery__button_like">
-      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
-      </button>
-    </div>
-  </div>
-  <div class="gallery__item">
-    <button class="card__delete-button">
-    <img src="images/delete.svg" alt="Eliminar tarjeta">
-    </button>
-    <img class="gallery__image" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg" alt="imagen de Lago di Braies, lago ubicado en italia" />
-    <div class="gallery__info">
-      <p class="gallery__title">Lago di Braies</p>
-      <button class="gallery__button gallery__button_like">
-      <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
-      </button>
-    </div>
-  </div>
-   <footer class="footer">
+</section>
+<footer class="footer">
   <p class="footer__text">© 2025 Around the U.S.</p>
 </footer>
-</section>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/validate.js"></script>
+    <script type="module" src="scripts/index.js"></script>
     <div class="modal modal-edit hidden">
   <div class="modal__container">
     <button type="button" class="modal__close">×</button>
@@ -155,28 +82,27 @@
 <div class="modal modal-add-place hidden">
   <div class="modal__content">
     <button class="modal__close modal-add-place__close">&times;</button>
-    <form class="add-form" novalidate>
+    <form class="add-form form-validator" novalidate>
       <h2 class="modal__title">Nuevo lugar</h2>
       <input
-        type="text"
-        class="add-form__input"
-        name="place-name"
-        placeholder="Nombre"
-        required
-        minlength="2"
-        maxlength="30"
-        data-validate="true"
-      />
-      <span class="add-form__input-error place-name-error"></span>
-      <input
-        type="url"
-        class="add-form__input"
-        name="place-url"
-        placeholder="Enlace de la imagen"
-        required
-        data-validate="true"
-      />
-      <span class="add-form__input-error place-url-error"></span>
+  type="text"
+  class="add-form__input form-validator__input"
+  name="place-name"
+  placeholder="Nombre"
+  required
+  minlength="2"
+  maxlength="30"
+/>
+<span class="form-validator__error place-name-error"></span>
+
+<input
+  type="url"
+  class="add-form__input form-validator__input"
+  name="place-url"
+  placeholder="Enlace de la imagen"
+  required
+/>
+<span class="form-validator__error place-url-error"></span>
       <button type="submit" class="edit-form__submit form-validator__submit" disabled>Guardar</button>
     </form>
   </div>
@@ -189,5 +115,19 @@
   </div>
 </div>
 </div>
+<template id="card-template">
+  <div class="gallery__item">
+    <button class="card__delete-button">
+      <img src="images/delete.svg" alt="Eliminar tarjeta">
+    </button>
+    <img class="gallery__image" src="" alt="" />
+    <div class="gallery__info">
+      <p class="gallery__title"></p>
+      <button class="gallery__button gallery__button_like">
+        <img src="images/heartbutton.svg" alt="Me gusta" class="gallery__like-icon">
+      </button>
+    </div>
+  </div>
+</template>
 </body>
 </html>
