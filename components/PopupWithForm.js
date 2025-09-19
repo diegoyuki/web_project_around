@@ -1,11 +1,13 @@
-import Popup from './Popup.js';
 
+import Popup from './Popup.js';
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector('form');
     this._inputList = Array.from(this._form.querySelectorAll('input'));
+    this._submitButton = this._form.querySelector('.form-validator__submit');
+    this._defaultButtonText = this._submitButton.textContent;
   }
 
   _getInputValues() {
@@ -27,5 +29,12 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
+  }
+  renderLoading(isLoading, loadingText='Guardando...') {
+    if (isLoading) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._defaultButtonText;
+    }
   }
 }

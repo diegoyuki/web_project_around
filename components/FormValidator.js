@@ -36,7 +36,7 @@ export default class FormValidator {
       });
     });
 
-    this._toggleButtonState(); // Initial state
+    this._toggleButtonState(); 
   }
 
   enableValidation() {

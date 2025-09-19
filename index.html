@@ -16,24 +16,25 @@
     </header>
         <hr class="divider">
     <section class="user">
+  <div class="profile__avatar-container">
   <img 
-    class="user__image"
+    class="profile__avatar"
     src="https://theobjective.com/wp-content/uploads/2024/01/Cousteau1-1200x675.jpeg" 
     alt="Profile Picture"
   />
-  <div class="user__info">
-    <h2 class="user__name">
-  Jacques Cousteau
-  <button class="user__edit user__edit_button">
-    <img 
-      class="user__edit user__edit_button user__edit user__edit_image"
-      src="images/Edit Button.png"
-      alt="boton de edicion"
-    />
+  <button class="user__avatar-edit-button">
+    <img src="images/Vector.png" alt="Editar avatar">
   </button>
-</h2>
-    <p class="user__bio">Explorador</p>
+</div>
+  <div class="user__info">
+  <div class="user__name-container">
+    <h2 class="user__name">Jacques Cousteau</h2>
+    <button class="user__edit user__edit_button">
+      <img src="images/Edit Button.png" alt="boton de edicion" />
+    </button>
   </div>
+  <p class="user__bio">Explorador</p>
+</div>
   <button class="user__bio user__bio_button">
   <img 
     class="user__bio user__bio_button user__bio user__bio_image"
@@ -129,5 +130,35 @@
     </div>
   </div>
 </template>
+<div class="modal modal-confirm hidden">
+  <div class="modal__container">
+    <button type="button" class="modal__close">×</button>
+    <h3 class="modal__title">¿Estás seguro?</h3>
+    <button type="button" class="popup__confirm-button">Sí</button>
+    <button type="button" class="modal__close">X</button>
+  </div>
+</div>
+
+<div class="modal modal-edit-avatar hidden">
+  <div class="modal__container">
+    <button type="button" class="modal__close">×</button>
+    <form class="edit-avatar-form form-validator">
+      <h3 class="edit-avatar-form__title">Cambiar avatar</h3>
+      <input
+        type="url"
+        class="form-validator__input"
+        name="avatar-url"
+        placeholder="Enlace de la nueva foto"
+        required
+      />
+      <span class="form-validator__error avatar-url-error"></span>
+      <button
+        type="submit"
+        class="form-validator__submit edit-avatar-form__submit"
+        disabled
+      >Guardar</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>

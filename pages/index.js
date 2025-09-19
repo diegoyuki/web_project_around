@@ -1,18 +1,19 @@
+import Api from '../components/Api.js';
 import Section from '../components/Section.js';
-import Card from '../components/card.js'; 
+import Card from '../components/card.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import UserInfo from '../components/UserInfo.js';
 
-const initialCards = [
-  { title: 'Valle de Yosemite', imageUrl: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg' },
-  { title: 'Lago Louise', imageUrl: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg' },
-  { title: 'Montañas Calvas', imageUrl: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg' },
-  { title: 'Latemar', imageUrl: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg' },
-  { title: 'Vanois National...', imageUrl: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg' },
-  { title: 'Lago di Braies', imageUrl: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg' }
-];
+const api = new Api({
+  baseUrl: 'https://around-api.es.tripleten-services.com/v1',
+  headers: {
+    authorization: 'f84d45fc-8ca5-429d-943f-7b066554a10c',
+    'Content-Type': 'application/json'
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const validatorConfig = {
@@ -30,42 +31,130 @@ document.addEventListener('DOMContentLoaded', () => {
   const popupImage = new PopupWithImage('.modal-image-preview');
   popupImage.setEventListeners();
 
-  const section = new Section({
-    items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, '#card-template', (title, imageUrl) => {
-        popupImage.open(title, imageUrl);
+  const userInfo = new UserInfo({
+    nameSelector: '.user__name',
+    bioSelector: '.user__bio',
+    avatarSelector: '.profile__avatar'
+  });
+
+  const popupConfirm = new PopupWithConfirmation('.modal-confirm');
+  popupConfirm.setEventListeners();
+
+  const editProfilePopup = new PopupWithForm('.modal-edit', (formData) => {
+    const name = formData['user-name'];
+    const about = formData['user-bio'];
+    editProfilePopup.renderLoading(true);
+
+    api.updateUserInfo({ name, about })
+      .then((updatedData) => {
+        userInfo.setUserInfo({ name: updatedData.name, bio: updatedData.about });
+        editProfilePopup.close();
+      })
+      .catch((err) => {
+        console.error('Error al actualizar perfil:', err);
+      })
+      .finally(() => {
+        editProfilePopup.renderLoading(false);
       });
-      const cardElement = card.generateCard();
+  });
+  editProfilePopup.setEventListeners();
+
+  const addCardPopup = new PopupWithForm('.modal-add-place', (formData) => {
+    const name = formData['place-name'];
+    const link = formData['place-url'];
+    addCardPopup.renderLoading(true);
+
+    api.addCard({ name, link })
+      .then((newCardData) => {
+        const cardElement = createCard({
+          title: newCardData.name,
+          imageUrl: newCardData.link,
+          id: newCardData._id,
+          ownerId: newCardData.owner,
+          isLiked: newCardData.isLiked
+        });
+        section.addItem(cardElement);
+        addCardPopup.close();
+      })
+      .catch(err => console.error('Error al agregar tarjeta:', err))
+      .finally(() => {
+        addCardPopup.renderLoading(false);
+      });
+  });
+  addCardPopup.setEventListeners();
+
+  const editAvatarPopup = new PopupWithForm('.modal-edit-avatar', (formData) => {
+    const avatarUrl = formData['avatar-url'];
+    editAvatarPopup.renderLoading(true);
+
+    api.updateAvatar({ avatar: avatarUrl })
+      .then((updatedUser) => {
+        document.querySelector('.profile__avatar').src = updatedUser.avatar;
+        editAvatarPopup.close();
+      })
+      .catch(err => console.error('Error al actualizar avatar:', err))
+      .finally(() => {
+        editAvatarPopup.renderLoading(false);
+      });
+  });
+  editAvatarPopup.setEventListeners();
+
+  const section = new Section({
+    items: [],
+    renderer: (item) => {
+      const cardElement = createCard(item);
       section.addItem(cardElement);
     }
   }, '.gallery');
 
-  section.renderItems();
+  Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    console.log('Número de tarjetas recibidas:', cards.length);
+    console.log('Tarjetas recibidas:', cards);
+    userInfo.setUserInfo({
+      name: userData.name,
+      bio: userData.about
+    });
+    document.querySelector('.profile__avatar').src = userData.avatar;
+    window.currentUserId = userData._id;
 
-  const userInfo = new UserInfo({
-    nameSelector: '.user__name',
-    bioSelector: '.user__bio'
+    section.renderItems(cards.map(card => ({
+      title: card.name,
+      imageUrl: card.link,
+      id: card._id,
+      ownerId: card.owner,
+      isLiked: card.isLiked
+    })));
+  })
+  .catch((err) => {
+    console.error('Error al cargar datos:', err);
   });
 
-  const editProfilePopup = new PopupWithForm('.modal-edit', (formData) => {
-    userInfo.setUserInfo({ name: formData['user-name'], bio: formData['user-bio'] });
-    editProfilePopup.close();
-  });
-
-  editProfilePopup.setEventListeners();
-
-  const addCardPopup = new PopupWithForm('.modal-add-place', (formData) => {
-    const newCard = new Card(
-      { title: formData['place-name'], imageUrl: formData['place-url'] },
-      '#card-template',
-      (title, imageUrl) => popupImage.open(title, imageUrl)
-    );
-    section.addItem(newCard.generateCard());
-    addCardPopup.close();
-  });
-
-  addCardPopup.setEventListeners();
+  function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    '#card-template',
+    (title, imageUrl) => popupImage.open(title, imageUrl),
+    (cardId, cardElement) => {
+      popupConfirm.open(() => {
+        api.deleteCard(cardId)
+          .then(() => {
+            cardElement.remove();
+            popupConfirm.close();
+          })
+          .catch(err => console.error('Error al eliminar tarjeta:', err));
+      });
+    },
+    (cardId, isLiked) => {
+      if (!isLiked) {
+        return api.likeCard(cardId);
+      } else {
+        return api.unlikeCard(cardId);
+      }
+    }
+  );
+  return card.generateCard();
+}
 
   document.querySelector('.user__edit_button').addEventListener('click', () => {
     const { name, bio } = userInfo.getUserInfo();
@@ -76,5 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('.user__bio_button').addEventListener('click', () => {
     addCardPopup.open();
+  });
+
+  document.querySelector('.user__avatar-edit-button').addEventListener('click', () => {
+    editAvatarPopup.open();
   });
 });
