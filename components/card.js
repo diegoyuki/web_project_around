@@ -39,7 +39,7 @@ export default class Card {
           this._isLiked = updatedCard.isLiked;
           likeIcon.setAttribute(
             'src',
-            this._isLiked ? 'images/heartactive.png' : 'images/heartbutton.svg'
+            this._isLiked ? '../images/heartactive.png' : '../images/heartbutton.svg'
           );
         })
         .catch(err => console.error('Error al alternar like:', err));
@@ -59,7 +59,7 @@ export default class Card {
     titleEl.textContent = this._title;
     likeIcon.setAttribute(
       'src',
-      this._isLiked ? 'images/heartactive.png' : 'images/heartbutton.svg'
+      this._isLiked ? '../images/heartactive.png' : '../images/heartbutton.svg'
     );
 
     this._setEventListeners(this._element);
